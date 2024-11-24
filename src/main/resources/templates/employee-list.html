@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee List</title>
+</head>
+<body>
+<h1>Employee List</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Salary</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iterate over employeeList using Thymeleaf syntax -->
+    <tr th:each="employee : ${employeeList}">
+        <td th:text="${employee.id}"></td>
+        <td th:text="${employee.name}"></td>
+        <td th:text="${employee.salary}"></td>
+    </tr>
+    <!-- Show this if the list is empty -->
+    <tr th:if="${#lists.isEmpty(employeeList)}">
+        <td colspan="3">No employees found</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
