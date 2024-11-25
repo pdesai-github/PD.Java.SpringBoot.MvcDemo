@@ -15,13 +15,13 @@
     </thead>
     <tbody>
     <!-- Iterate over employeeList using Thymeleaf syntax -->
-    <tr th:each="employee : ${employeeList}">
-        <td th:text="${employee.id}"></td>
-        <td th:text="${employee.name}"></td>
-        <td th:text="${employee.salary}"></td>
+    <tr th:each="employee : ${employees}">
+        <td th:text="${employee.getFirstName()}"></td>
+        <td th:text="${employee.getLastName()}"></td>
+        <td th:text="${employee.getEmail()}"></td>
     </tr>
     <!-- Show this if the list is empty -->
-    <tr th:if="${#lists.isEmpty(employeeList)}">
+    <tr th:if="${#lists.isEmpty(employees)}">
         <td colspan="3">No employees found</td>
     </tr>
     </tbody>

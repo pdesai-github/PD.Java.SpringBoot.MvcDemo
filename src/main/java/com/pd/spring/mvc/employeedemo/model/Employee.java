@@ -1,40 +1,48 @@
 package com.pd.spring.mvc.employeedemo.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.util.UUID;
 
+@Entity
 public class Employee {
 
-    private UUID id;
-    private String name;
-    private double salary;
+    @Id
+    private int employeeId;
+    private String firstName;
+    private String lastName;
+    private String email;
 
-    public Employee(UUID id, String name, double salary) {
-        this.id = id;
-        this.name = name;
-        this.salary = salary;
+    public int getEmployeeId() {
+        return employeeId;
     }
 
-    public UUID getId() {
-        return id;
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getName() {
-        return name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public double getSalary() {
-        return salary;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public void setSalary(double salary) {
-        this.salary = salary;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

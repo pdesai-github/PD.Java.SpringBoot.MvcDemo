@@ -1,6 +1,8 @@
 package com.pd.spring.mvc.employeedemo.controller;
 
 import com.pd.spring.mvc.employeedemo.model.Employee;
+import com.pd.spring.mvc.employeedemo.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,15 +16,15 @@ import java.util.UUID;
 @RequestMapping("/employees")
 public class EmployeeController {
 
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
     @GetMapping
     public String getAllEmployees(Model model) {
         // Create mock employee data
-        List<Employee> employees = Arrays.asList(
-                new Employee(UUID.randomUUID(), "Alice", 50001.0),
-                new Employee(UUID.randomUUID(), "Bob", 60001.0),
-                new Employee(UUID.randomUUID(), "Charlie", 55000.0)
-        );
-        model.addAttribute("employeeList", employees);
+        List<Employee> employees = employeeRepository.findAll();
+        model.addAttribute("employees", employees);
+
         return "employee-list";
     }
 
